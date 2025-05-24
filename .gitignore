@@ -1,8 +1,42 @@
-tt.*
-.tests
-doc/tags
-debug
-.repro
-foo.*
-*.log
-data
+# LazyVim specific files
+lazy-lock.json
+lazyvim.json
+
+# Plugin directories (managed by Lazy)
+lazy/
+
+# LSP and Mason data
+mason/
+lsp.log
+
+# Neovim session files
+Session.vim
+.session
+
+# Undo files
+*.un~
+
+# Swap files
+*.swp
+*.swo
+*~
+
+# Temporary files
+.netrwhist
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Personal machine-specific configs (if you add any)
+local.lua
+machine-specific.lua
+
+# Debugging/testing files
+debug.lua
+test.lua
+
+# Any personal notes or scratch files
+notes/
+scratch/
+*.scratch
