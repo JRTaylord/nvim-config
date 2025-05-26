@@ -1,6 +1,5 @@
-local hostname = vim.fn.hostname()
-local is_low_memory = hostname == "JAMES-FRAMEWORK"
-print("is_low_memory:", is_low_memory)
+local disable_lua_diagnostics = true
+-- print("disable_lua_diagnostics:", disable_lua_diagnostics)
 
 return {
   {
@@ -11,7 +10,7 @@ return {
           settings = {
             Lua = {
               diagnostics = {
-                workspaceDelay = is_low_memory and -1 or 1000, -- Disable workspace diagnostics
+                workspaceDelay = disable_lua_diagnostics and -1 or 1000, -- Disable workspace diagnostics
               },
             },
           },
