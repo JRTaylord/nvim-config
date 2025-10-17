@@ -39,4 +39,8 @@ test.lua
 # Any personal notes or scratch files
 notes/
 scratch/
+.claude/
 *.scratch
+
+# Trash files
+nul
