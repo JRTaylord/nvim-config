@@ -64,6 +64,7 @@ TROUBLESHOOTING:
 return {
   {
     "milanglacier/minuet-ai.nvim",
+    lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
@@ -73,16 +74,16 @@ return {
         provider = "claude",
 
         -- Notification level: false, 'debug', 'verbose', 'warn', 'error'
-        notify = "warn",
+        notify = "verbose",
 
         -- Context window size in characters
         context_window = 16000,
 
         -- Throttle requests (ms) - minimum time between requests
-        throttle = 1000,
+        throttle = 2000,
 
         -- Debounce input (ms) - wait time after typing stops
-        debounce = 400,
+        debounce = 1000,
 
         -- Request timeout (ms)
         request_timeout = 3000,
@@ -97,7 +98,7 @@ return {
         provider_options = {
           -- Claude configuration (Anthropic)
           claude = {
-            model = "claude-sonnet-4-20250514",
+            model = "claude-sonnet-4-0",
             stream = true,
             -- API key from environment variable
             api_key = "ANTHROPIC_API_KEY",
@@ -130,34 +131,34 @@ return {
             },
           },
         },
+        auto_trigger_ft = {
+          "lua",
+          "python",
+          "java",
+          "javascript",
+          "typescript",
+          "javascriptreact",
+          "typescriptreact",
+          "cpp",
+          "c",
+          "rust",
+          "go",
+          "html",
+          "css",
+          "json",
+          "yaml",
+          "markdown",
+        },
+        keymap = {
+          accept = "<A-A>",
+          accept_line = "<A-a>",
+          accept_n_lines = "<A-z>",
+          prev = "<A-[",
+          next = "<A-]",
+          dismiss = "<A-e>",
+        },
       })
     end,
   },
 
-  -- Integrate minuet with nvim-cmp
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "milanglacier/minuet-ai.nvim",
-    },
-    opts = function(_, opts)
-      -- Add minuet as a completion source
-      table.insert(opts.sources, 1, {
-        name = "minuet",
-        group_index = 1,
-        priority = 100,
-      })
-
-      -- Configure performance settings for AI completions
-      opts.performance = opts.performance or {}
-      opts.performance.fetching_timeout = 2000
-
-      -- Add keybinding for minuet-specific accept
-      local cmp = require("cmp")
-      opts.mapping = opts.mapping or {}
-      opts.mapping["<A-y>"] = require("minuet").make_cmp_map()
-
-      return opts
-    end,
-  },
 }
