@@ -74,7 +74,7 @@ return {
         provider = "claude",
 
         -- Notification level: false, 'debug', 'verbose', 'warn', 'error'
-        notify = "verbose",
+        notify = "debug",
 
         -- Context window size in characters
         context_window = 16000,
@@ -131,31 +131,31 @@ return {
             },
           },
         },
-        auto_trigger_ft = {
-          "lua",
-          "python",
-          "java",
-          "javascript",
-          "typescript",
-          "javascriptreact",
-          "typescriptreact",
-          "cpp",
-          "c",
-          "rust",
-          "go",
-          "html",
-          "css",
-          "json",
-          "yaml",
-          "markdown",
-        },
-        keymap = {
-          accept = "<A-A>",
-          accept_line = "<A-a>",
-          accept_n_lines = "<A-z>",
-          prev = "<A-[",
-          next = "<A-]",
-          dismiss = "<A-e>",
+        -- Virtual text mode configuration
+        virtualtext = {
+          auto_trigger_ft = {
+            "lua",
+            "python",
+            "java",
+            "javascript",
+            "typescript",
+            "javascriptreact",
+            "typescriptreact",
+            "cpp",
+            "c",
+            "rust",
+            "go",
+            "html",
+            "css",
+            "json",
+            "yaml",
+            "markdown",
+          },
+          keymap = {
+            accept = "<C-j>",
+            accept_line = "<C-l>",
+            dismiss = "<C-e>",
+          },
         },
       })
     end,
