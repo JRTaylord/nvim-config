@@ -98,7 +98,7 @@ return {
         provider_options = {
           -- Claude configuration (Anthropic)
           claude = {
-            model = "claude-sonnet-4-0",
+            model = "claude-3-haiku-20240307",
             stream = true,
             -- API key from environment variable
             api_key = "ANTHROPIC_API_KEY",
