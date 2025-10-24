@@ -77,7 +77,7 @@ return {
         notify = "debug",
 
         -- Context window size in characters
-        context_window = 16000,
+        context_window = 4000,
 
         -- Throttle requests (ms) - minimum time between requests
         throttle = 2000,
@@ -89,7 +89,7 @@ return {
         request_timeout = 3000,
 
         -- Number of completion items to generate
-        n_completions = 3,
+        n_completions = 1,
 
         -- Add single line completions
         add_single_line_entry = true,
@@ -99,11 +99,11 @@ return {
           -- Claude configuration (Anthropic)
           claude = {
             model = "claude-3-haiku-20240307",
-            stream = true,
+            stream = false,
             -- API key from environment variable
             api_key = "ANTHROPIC_API_KEY",
             end_point = "https://api.anthropic.com/v1/messages",
-            max_tokens = 512,
+            max_tokens = 256,
             optional = {
               -- Additional Claude-specific parameters can go here
             },
