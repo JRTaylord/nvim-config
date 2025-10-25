@@ -83,7 +83,7 @@ return {
         throttle = 2000,
 
         -- Debounce input (ms) - wait time after typing stops
-        debounce = 10000,
+        debounce = 6000,
 
         -- Request timeout (ms)
         request_timeout = 3000,
@@ -106,6 +106,29 @@ return {
             max_tokens = 256,
             optional = {
               -- Additional Claude-specific parameters can go here
+            },
+            system = {
+              prompt = [[You are a code completion engine. Your ONLY job is to complete code at the cursor
+  position.
+
+  CRITICAL RULES:
+  - Output ONLY raw code completions
+  - NO explanations, NO comments, NO markdown formatting
+  - NO code fences (```)
+  - NO conversational text
+  - Start immediately with the code that comes after <cursorPosition>
+
+  Input format:
+  - <contextAfterCursor>: code after cursor
+  - <cursorPosition>: where to insert completion
+  - <contextBeforeCursor>: code before cursor]],
+              guidelines = [[Output format:
+  1. Write code that continues from <cursorPosition>
+  2. Preserve exact indentation and whitespace
+  3. Separate multiple completions with <endCompletion>
+  4. Output raw code only - treat this as a pure text completion task, not a conversation
+  5. Do NOT wrap output in markdown code blocks
+  6. Do NOT add explanatory text before or after code]],
             },
           },
 
