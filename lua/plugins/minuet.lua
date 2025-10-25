@@ -83,7 +83,7 @@ return {
         throttle = 2000,
 
         -- Debounce input (ms) - wait time after typing stops
-        debounce = 1000,
+        debounce = 10000,
 
         -- Request timeout (ms)
         request_timeout = 3000,
@@ -160,5 +160,4 @@ return {
       })
     end,
   },
-
 }
