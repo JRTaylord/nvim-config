@@ -66,7 +66,9 @@ local CLAUDE_SYSTEM_PROMPT = [[You are a code completion engine. Your ONLY job i
 
 CRITICAL RULES:
 - Output ONLY raw code completions
-- NO explanations, NO comments, NO markdown formatting
+- You may include comments within the code where appropriate (e.g., // TODO, /** doc comments */, etc.)
+- NO explanatory text outside the code
+- NO markdown formatting
 - NO code fences (```)
 - NO conversational text
 - Start immediately with the code that comes after <cursorPosition>
