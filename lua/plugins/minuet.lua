@@ -61,6 +61,29 @@ TROUBLESHOOTING:
 
 --]]
 
+-- System prompts for Claude code completion
+local CLAUDE_SYSTEM_PROMPT = [[You are a code completion engine. Your ONLY job is to complete code at the cursor position.
+
+CRITICAL RULES:
+- Output ONLY raw code completions
+- NO explanations, NO comments, NO markdown formatting
+- NO code fences (```)
+- NO conversational text
+- Start immediately with the code that comes after <cursorPosition>
+
+Input format:
+- <contextAfterCursor>: code after cursor
+- <cursorPosition>: where to insert completion
+- <contextBeforeCursor>: code before cursor]]
+
+local CLAUDE_SYSTEM_GUIDELINES = [[Output format:
+1. Write code that continues from <cursorPosition>
+2. Preserve exact indentation and whitespace
+3. Separate multiple completions with <endCompletion>
+4. Output raw code only - treat this as a pure text completion task, not a conversation
+5. Do NOT wrap output in markdown code blocks
+6. Do NOT add explanatory text before or after code]]
+
 return {
   {
     "milanglacier/minuet-ai.nvim",
@@ -108,27 +131,8 @@ return {
               -- Additional Claude-specific parameters can go here
             },
             system = {
-              prompt = [[You are a code completion engine. Your ONLY job is to complete code at the cursor
-  position.
-
-  CRITICAL RULES:
-  - Output ONLY raw code completions
-  - NO explanations, NO comments, NO markdown formatting
-  - NO code fences (```)
-  - NO conversational text
-  - Start immediately with the code that comes after <cursorPosition>
-
-  Input format:
-  - <contextAfterCursor>: code after cursor
-  - <cursorPosition>: where to insert completion
-  - <contextBeforeCursor>: code before cursor]],
-              guidelines = [[Output format:
-  1. Write code that continues from <cursorPosition>
-  2. Preserve exact indentation and whitespace
-  3. Separate multiple completions with <endCompletion>
-  4. Output raw code only - treat this as a pure text completion task, not a conversation
-  5. Do NOT wrap output in markdown code blocks
-  6. Do NOT add explanatory text before or after code]],
+              prompt = CLAUDE_SYSTEM_PROMPT,
+              guidelines = CLAUDE_SYSTEM_GUIDELINES,
             },
           },
 
