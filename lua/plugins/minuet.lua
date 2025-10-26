@@ -62,7 +62,8 @@ TROUBLESHOOTING:
 --]]
 
 -- System prompts for Claude code completion
-local CLAUDE_SYSTEM_PROMPT = [[You are a code completion engine. Your ONLY job is to complete code at the cursor position.
+local CLAUDE_SYSTEM_PROMPT =
+  [[You are a code completion engine. Your ONLY job is to complete code at the cursor position.
 
 CRITICAL RULES:
 - Output ONLY raw code completions
@@ -108,7 +109,7 @@ return {
         throttle = 2000,
 
         -- Debounce input (ms) - wait time after typing stops
-        debounce = 6000,
+        debounce = 4000,
 
         -- Request timeout (ms)
         request_timeout = 3000,
