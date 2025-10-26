@@ -6,11 +6,12 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        vtsls = false, -- ADD THIS - disables vtsls
         lua_ls = {
           settings = {
             Lua = {
               diagnostics = {
-                workspaceDelay = disable_lua_diagnostics and -1 or 1000, -- Disable workspace diagnostics
+                workspaceDelay = disable_lua_diagnostics and -1 or 1000,
               },
             },
           },
