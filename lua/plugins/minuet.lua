@@ -180,6 +180,7 @@ return {
             "json",
             "yaml",
             "markdown",
+            "ps1",
           },
           keymap = {
             accept = "<C-j>",
