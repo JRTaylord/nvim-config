@@ -44,3 +44,6 @@ scratch/
 
 # Trash files
 nul
+
+# Agent files
+tmp*
