@@ -61,6 +61,12 @@ TROUBLESHOOTING:
 
 --]]
 
+-- Disable minuet on laptop (JamesFramework)
+local hostname = vim.fn.hostname()
+if hostname == "JamesFramework" then
+  return {}
+end
+
 -- System prompts for Claude code completion
 local CLAUDE_SYSTEM_PROMPT =
   [[You are a code completion engine. Your ONLY job is to complete code at the cursor position.
