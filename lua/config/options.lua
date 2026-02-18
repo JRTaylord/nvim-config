@@ -3,3 +3,4 @@
 -- Add any additional options here
 
 vim.lsp.set_log_level("off")
+vim.g.autoformat = false
